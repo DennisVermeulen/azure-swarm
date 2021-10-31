@@ -62,7 +62,7 @@ resource "azurerm_virtual_machine_scale_set" "worker" {
 
     settings = jsonencode({
       "fileUris" = [
-        "https://raw.githubusercontent.com/cosmoconsult/azure-swarm/${var.branch}/scripts/workerSetupTasks.ps1"
+        "https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/${var.branch}/scripts/workerSetupTasks.ps1"
       ]
     })
 

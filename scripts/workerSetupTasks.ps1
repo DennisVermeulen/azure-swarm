@@ -42,7 +42,7 @@ if ($debugScripts -eq "true") {
 }
 
 New-Item -Path c:\scripts -ItemType Directory | Out-Null
-[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/scripts/workerConfig.ps1", 5, 10, $null, 'c:\scripts\workerConfig.ps1', $false)
+[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/scripts/workerConfig.ps1", 5, 10, $null, 'c:\scripts\workerConfig.ps1', $false)
 
 # Make sure the latest Docker EE is installed
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force

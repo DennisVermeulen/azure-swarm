@@ -140,7 +140,7 @@ resource "azurerm_virtual_machine_extension" "initMgr1" {
 
   settings = jsonencode({
     "fileUris" = [
-      "https://raw.githubusercontent.com/cosmoconsult/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
+      "https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
     ]
   })
 
@@ -262,7 +262,7 @@ resource "azurerm_windows_virtual_machine" "mgr3" {
 
   settings = jsonencode({
     "fileUris" = [
-      "https://raw.githubusercontent.com/cosmoconsult/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
+      "https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
     ]
   })
 
@@ -307,7 +307,7 @@ resource "azurerm_virtual_machine_extension" "initMgr3" {
 
   settings = jsonencode({
     "fileUris" = [
-      "https://raw.githubusercontent.com/cosmoconsult/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
+      "https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/${var.branch}/scripts/mgrInitSwarmAndSetupTasks.ps1"
     ]
   })
 

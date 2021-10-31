@@ -220,12 +220,12 @@ if (!(Test-Path -Path $PROFILE.AllUsersAllHosts)) {
     New-Item -ItemType File -Path $PROFILE.AllUsersAllHosts -Force
 }
 Write-Debug "Download profile file"
-[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/scripts/profile.ps1", 5, 10, $null, $PROFILE.AllUsersAllHosts, $false)
+[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/scripts/profile.ps1", 5, 10, $null, $PROFILE.AllUsersAllHosts, $false)
 
 # Setup tasks
 Write-Debug "Download task files"
-[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/scripts/mgrConfig.ps1", 5, 10, $null, "c:\scripts\mgrConfig.ps1", $false)
-[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/scripts/mountAzFileShare.ps1", 5, 10, $null, "c:\scripts\mountAzFileShare.ps1", $false)
+[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/scripts/mgrConfig.ps1", 5, 10, $null, "c:\scripts\mgrConfig.ps1", $false)
+[DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/scripts/mountAzFileShare.ps1", 5, 10, $null, "c:\scripts\mountAzFileShare.ps1", $false)
 
 Write-Debug "call mgrConfig script"
 & 'c:\scripts\mgrConfig.ps1' -name "$name" -externaldns "$externaldns" -cleanupThresholdGb $cleanupThresholdGb -cosmoInternal "$cosmoInternal" -dockerdatapath "$dockerdatapath" -email "$email" -additionalPostScript "$additionalPostScript" -branch "$branch" -storageAccountName "$storageAccountName" -storageAccountKey "$storageAccountKey" -isFirstMgr:$isFirstMgr -authToken "$authToken" 2>&1 >> c:\scripts\log.txt

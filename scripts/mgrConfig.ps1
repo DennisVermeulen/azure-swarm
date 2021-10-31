@@ -82,7 +82,7 @@ if (-not $restart) {
         New-Item -Path s:\portainer-data -ItemType Directory | Out-Null
 
         Write-Debug "Download compose file"
-        [DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/configs/docker-compose.yml.template", 5, 10, $null, 's:\compose\base\docker-compose.yml.template', $false)
+        [DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/configs/docker-compose.yml.template", 5, 10, $null, 's:\compose\base\docker-compose.yml.template', $false)
         $template = Get-Content 's:\compose\base\docker-compose.yml.template' -Raw
         $expanded = Invoke-Expression "@`"`r`n$template`r`n`"@"
         $expanded | Out-File "s:\compose\base\docker-compose.yml" -Encoding ASCII
@@ -99,7 +99,7 @@ if (-not $restart) {
     choco install --no-progress --limit-output openssh -params '"/SSHServerFeature"'
 
     Write-Debug "Download ssh config file"
-    [DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/cosmoconsult/azure-swarm/$branch/configs/sshd_config_wpwd", 5, 10, $null, 'C:\ProgramData\ssh\sshd_config', $false)
+    [DownloadWithRetry]::DoDownloadWithRetry("https://raw.githubusercontent.com/DennisVermeulen/azure-swarm/$branch/configs/sshd_config_wpwd", 5, 10, $null, 'C:\ProgramData\ssh\sshd_config', $false)
 
     Write-Debug "try to get access token"
     $content = [DownloadWithRetry]::DoDownloadWithRetry('http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net', 5, 10, $null, $null, $true) | ConvertFrom-Json
