@@ -4,7 +4,7 @@ services:
   traefik:
     image: tobiasfenster/french-reverse-proxy:2.3.4-windowsservercore
     command:
-#      - --log.level=DEBUG
+      - --log.level=DEBUG
       - --api.dashboard=true
       - --providers.docker.swarmMode=true
       - --providers.docker.network=traefik-public
@@ -14,7 +14,7 @@ services:
       - --certificatesresolvers.myresolver.acme.tlschallenge=true
       - --certificatesresolvers.myresolver.acme.email=$email
       - --certificatesresolvers.myresolver.acme.storage=c:/le/acme.json
-      - --serversTransport.insecureSkipVerify=true
+      - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
     volumes:
       - source: 'S:/le'
         target: 'C:/le'
