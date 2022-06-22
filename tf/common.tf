@@ -2,7 +2,8 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.36.0"
+#      version = "=2.36.0"
+      version = "=3.10.0"
     }
     radomn = {
       source  = "hashicorp/random"
@@ -18,7 +19,8 @@ terraform {
 provider "azurerm" {
   features {
     key_vault {
-      purge_soft_delete_on_destroy = true
+      purge_soft_delete_on_destroy    = true
+      recover_soft_deleted_key_vaults = true
     }
   }
 }
@@ -79,15 +81,14 @@ output "ssh-copy-private-key" {
 }
 
 resource "azurerm_key_vault" "main" {
-  name                        = "${local.name}-vault"
-  location                    = azurerm_resource_group.main.location
-  resource_group_name         = azurerm_resource_group.main.name
-  enabled_for_deployment      = true
-  enabled_for_disk_encryption = true
-  tenant_id                   = data.azurerm_client_config.current.tenant_id
-  soft_delete_enabled         = true
-  purge_protection_enabled    = false
-
+  name                         = "${local.name}-vault"
+  location                     = azurerm_resource_group.main.location
+  resource_group_name          = azurerm_resource_group.main.name
+  enabled_for_deployment       = true
+  enabled_for_disk_encryption  = true
+  tenant_id                    = data.azurerm_client_config.current.tenant_id
+  #soft_delete_enabled          = true
+  #purge_protection_enabled     = true
   sku_name = "standard"
 
   access_policy {
@@ -95,20 +96,20 @@ resource "azurerm_key_vault" "main" {
     object_id = data.azurerm_client_config.current.object_id
 
     key_permissions = [
-      "get",
-      "create"
+      "Get",
+      "Create"
     ]
 
     secret_permissions = [
-      "get",
-      "set",
-      "list",
-      "delete"
+      "Get",
+      "Set",
+      "List",
+      "Delete"
     ]
 
     certificate_permissions = [
-      "get",
-      "create"
+      "Get",
+      "Create"
     ]
   }
 

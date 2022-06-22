@@ -1,0 +1,10 @@
+.terraform/*
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.tfstate.lock.info
+tf/.terraform/*
+tf/.terraform.lock.hcl
+tf/.terraform.tfstate
+tf/.terraform.tfstate.backup
+./.git/objects/*

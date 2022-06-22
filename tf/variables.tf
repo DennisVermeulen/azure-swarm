@@ -1,6 +1,6 @@
 variable "prefix" {
   description = "Prefix for all names"
-  default     = "denver"
+  default     = "dvswarm"
 }
 
 locals {

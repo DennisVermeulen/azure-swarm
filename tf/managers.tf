@@ -101,7 +101,7 @@ resource "azurerm_windows_virtual_machine" "mgr1" {
   #availability_set_id      = azurerm_availability_set.mgr-avset.id
   admin_username           = var.adminUsername
   admin_password           = random_password.password.result
-  enable_automatic_updates = false
+  enable_automatic_updates = true
   network_interface_ids = [
     azurerm_network_interface.mgr1.id,
   ]
@@ -402,7 +402,7 @@ resource "azurerm_key_vault_access_policy" "mgr3" {
 data "azurerm_key_vault" "sync_kv" {
   provider            = azurerm.azurerm_sync_kv
   #name                = var.syncKeyVaultName
-  name = "dvkluis2"
+  name = "dvkluis5"
   #resource_group_name = var.syncKeyVaultResourceGroup
   resource_group_name = "rg-dennisvermeulen-devops"
 }

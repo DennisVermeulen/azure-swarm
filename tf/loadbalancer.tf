@@ -18,7 +18,7 @@ resource "azurerm_lb" "main" {
 }
 
 resource "azurerm_lb_backend_address_pool" "main" {
-  resource_group_name = azurerm_resource_group.main.name
+  #resource_group_name = azurerm_resource_group.main.name
   loadbalancer_id     = azurerm_lb.main.id
   name                = "${local.name}-lb-BackEndAddressPool"
 }
@@ -44,7 +44,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "mgr3" {
 }
 */
 resource "azurerm_lb_probe" "https" {
-  resource_group_name = azurerm_resource_group.main.name
+  #resource_group_name = azurerm_resource_group.main.name
   loadbalancer_id     = azurerm_lb.main.id
   name                = "https"
   port                = 443
@@ -53,14 +53,14 @@ resource "azurerm_lb_probe" "https" {
 }
 
 resource "azurerm_lb_rule" "https" {
-  resource_group_name            = azurerm_resource_group.main.name
+  #resource_group_name            = azurerm_resource_group.main.name
   loadbalancer_id                = azurerm_lb.main.id
   name                           = "https"
   protocol                       = "Tcp"
   frontend_port                  = 443
   backend_port                   = 443
   frontend_ip_configuration_name = "publicIPAddress"
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.main.id
+  #backend_address_pool_id        = azurerm_lb_backend_address_pool.main.id
   probe_id                       = azurerm_lb_probe.https.id
   idle_timeout_in_minutes        = 30
 }
