@@ -5,7 +5,7 @@ services:
     #image: tobiasfenster/french-reverse-proxy:2.3.4-windowsservercore
     image: traefik:windowsservercore-1809
     command:
-      - --log.level=DEBUG
+      #- --log.level=DEBUG
       - --api.dashboard=true
       - --providers.docker.swarmMode=true
       - --providers.docker.network=traefik-public
