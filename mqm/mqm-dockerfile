@@ -27,7 +27,7 @@ ENV _JAVA_OPTIONS "-Xmx128M -Xms128M"
 ENV PATH "C:\\jre\\bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\"
 
 # Admin Port
-EXPOSE 8616 
+EXPOSE 8161 
 # Listen Portdir
 EXPOSE 61616
 # STOMP is the Simple (or Streaming) Text Orientated Messaging Protocol
