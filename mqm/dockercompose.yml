@@ -1,0 +1,14 @@
+version: "3.8"    
+services:
+  mqm:
+    image: mqm:latest
+    volumes:
+      - C:\Replica01:c:\artemis\data
+    restart: always
+    ports:
+      - 8161:8161
+    networks:
+      - mqm-network
+networks:
+  mqm-network:
+    driver: overlay
