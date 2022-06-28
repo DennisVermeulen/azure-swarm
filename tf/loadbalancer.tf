@@ -60,7 +60,7 @@ resource "azurerm_lb_rule" "https" {
   frontend_port                  = 443
   backend_port                   = 443
   frontend_ip_configuration_name = "publicIPAddress"
-  #backend_address_pool_id        = azurerm_lb_backend_address_pool.main.id
+  backend_address_pool_ids       = [ azurerm_lb_backend_address_pool.main.id ] 
   probe_id                       = azurerm_lb_probe.https.id
   idle_timeout_in_minutes        = 30
 }
